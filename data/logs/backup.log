@@ -1,0 +1,42 @@
+[2025-04-28 02:00:00] [INFO] Backup process started
+[2025-04-28 02:05:00] [INFO] Compressing files in /home/workspace/ExamLinux/
+[2025-04-28 02:10:00] [INFO] Files compressed successfully: backup_2025-04-28.tar.gz
+[2025-04-28 02:15:00] [INFO] Transferring backup to remote server: 192.168.1.200
+[2025-04-28 02:20:00] [INFO] Backup transfer completed successfully
+[2025-04-28 02:25:00] [WARNING] Backup retention policy exceeded: 10 backups stored
+[2025-04-28 02:30:00] [INFO] Deleting oldest backup: backup_2025-04-18.tar.gz
+[2025-04-28 02:35:00] [INFO] Backup process completed
+[2025-04-28 02:40:00] [ERROR] Failed to delete backup: backup_2025-04-18.tar.gz
+[2025-04-28 02:45:00] [INFO] Backup process restarted
+[2025-04-28 02:50:00] [INFO] Compressing files in /home/workspace/ExamLinux/
+[2025-04-28 02:55:00] [INFO] Files compressed successfully: backup_2025-04-28.tar.gz
+[2025-04-28 03:00:00] [INFO] Transferring backup to remote server: 192.168.1.200
+[2025-04-28 03:05:00] [INFO] Backup transfer completed successfully
+[2025-04-28 03:10:00] [WARNING] Backup retention policy exceeded: 10 backups stored
+[2025-04-28 03:15:00] [INFO] Deleting oldest backup: backup_2025-04-19.tar.gz
+[2025-04-28 03:20:00] [INFO] Backup process completed
+[2025-04-28 03:25:00] [ERROR] Failed to delete backup: backup_2025-04-19.tar.gz
+[2025-04-28 03:30:00] [INFO] Backup process restarted
+[2025-04-28 03:35:00] [INFO] Compressing files in /home/workspace/ExamLinux/
+[2025-04-28 03:40:00] [INFO] Files compressed successfully: backup_2025-04-28.tar.gz
+[2025-04-28 03:45:00] [INFO] Transferring backup to remote server: 192.168.1.200
+[2025-04-28 03:50:00] [INFO] Backup transfer completed successfully
+[2025-04-28 03:55:00] [WARNING] Backup retention policy exceeded: 10 backups stored
+[2025-04-28 04:00:00] [INFO] Deleting oldest backup: backup_2025-04-20.tar.gz
+[2025-04-28 04:05:00] [INFO] Backup process completed
+[2025-04-28 04:10:00] [INFO] Compressing files in /home/workspace/ExamLinux/
+[2025-04-28 04:15:00] [INFO] Files compressed successfully: backup_2025-04-28.tar.gz
+[2025-04-28 04:20:00] [INFO] Transferring backup to remote server: 192.168.1.200
+[2025-04-28 04:25:00] [INFO] Backup transfer completed successfully
+[2025-04-28 04:30:00] [WARNING] Backup retention policy exceeded: 10 backups stored
+[2025-04-28 04:35:00] [INFO] Deleting oldest backup: backup_2025-04-21.tar.gz
+[2025-04-28 04:40:00] [INFO] Backup process completed
+[2025-04-28 04:45:00] [ERROR] Failed to delete backup: backup_2025-04-21.tar.gz
+[2025-04-28 04:50:00] [INFO] Backup process restarted
+[2025-04-28 04:55:00] [INFO] Compressing files in /home/workspace/ExamLinux/
+[2025-04-28 05:00:00] [INFO] Files compressed successfully: backup_2025-04-28.tar.gz
+[2025-04-28 05:05:00] [INFO] Transferring backup to remote server: 192.168.1.200
+[2025-04-28 05:10:00] [INFO] Backup transfer completed successfully
+[2025-04-28 05:15:00] [WARNING] Backup retention policy exceeded: 10 backups stored
+[2025-04-28 05:20:00] [INFO] Deleting oldest backup: backup_2025-04-22.tar.gz
+[2025-04-28 05:25:00] [INFO] Backup process completed
