@@ -1,0 +1,39 @@
+    1  setgid securite/
+    2  exit
+    3  cd /home/workspace/ExamLinux
+    4  cd app
+    5  sudo vi analyse_logs.sh
+    6  ls
+    7  sudo rm analyse_logs.sh
+    8  sudo rm analyse_logs.sh.tmp 
+    9  sudo vi analyse_logs.sh
+   10  ls -a
+   11  sudo vi analyse_logs.sh.swp
+   12  sudo rm analyse_logs.sh.swp
+   13  sudo vi analyse_log.sh
+   14  chmod +x analyse_log.sh
+   15  ./analyse_log.sh ../data/logs/
+   16  sudo vi analyse_log.sh
+   17  ./analyse_log.sh ../data/logs/
+   18  sudo vi analyse_log.sh
+   19  ./analyse_log.sh ../data/logs/
+   20  sudo vi /etc/sudoers.d
+   21  sudo vi /etc/sudoers
+   22  groups
+   23  groupadd sudo
+   24  usermod -aG sudo student
+   25  groups
+   26  ./analyse_log.sh ../data/logs/
+   27  sudo vi analyse_log.sh
+   28  ./analyse_log.sh ../data/logs/
+   29  cd ../test
+   30  test fusion.txt
+   31  sort fusion.txt
+   32  sort fusion.txt fusion_sorted.txt
+   33  sudo touch fusion_sorted.txt
+   34  sort fusion.txt
+   35  sort fusion.txt | sudo tee fusion_sorted.txt
+   36  cat fusion_sorted.txt
+   37  uniq fusion_sorted.txt | sudo tee fusion_unique.txt
+   38  cd ..
+   39  history | sudo tee commands.txt

@@ -1,1 +1,2 @@
-les lignes contenant exactement 5 chiffres consécutifs:
+(standard input)
+(standard input)
