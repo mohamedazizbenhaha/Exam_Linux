@@ -1,6 +1,6 @@
 # EXAMEN PRATIQUE LINUX
 
-📅 **Durée** : 45 - 60 min  
+📅 **Durée** : 60 min  
 📁 **Environnement fourni** : Un conteneur Docker interactif  
 🐳 **Configuration** : Docker doit être installé sur votre machine.  
 🔁 **À rendre via Git** :
