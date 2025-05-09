@@ -1,1 +1,0 @@
-les lignes contenant exactement 5 chiffres consécutifs:

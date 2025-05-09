@@ -1,0 +1,19 @@
+Alice Dupont|Developer|active|2025-01-15|dev,docker
+Barbara Wilson|Developer|active|2025-04-25|dev,ai|lead
+Charlie Durand|Developer|inactive|2025-02-28|dev
+Denis Dujardin|Security|active|2025-03-15|security,audit
+Diana Chen|Database Admin|active|2025-04-21|dba,security|lead
+Emilie Deville|Database Admin|active|2025-01-30|dba,backup
+Fabrice Denis|Network Admin|active|2024-11-15|network,security
+George Lemoine|Developer|active|2025-04-01|dev,testing
+Helene Dupuis|System Admin|active|2025-03-01|admin,security
+Jacques Lambert|Developer|inactive|2025-01-01|dev
+Kevin Thomas|Database Admin|active|2025-04-15|dba,backup
+Michel Dubois|Developer|active|2025-04-10|dev,docker
+Patricia Klein|Developer|active|2025-03-25|dev,testing
+Robert Dumas|Database Admin|active|2025-04-01|dba,monitoring
+Thomas Duval|Developer|active|2025-04-05|dev,docker
+Victor Durant|Security|active|2025-04-12|security,audit
+William Dubois|Developer|active|2025-03-20|dev,testing
+Xavier Dupont|Database Admin|active|2025-04-08|dba,backup
+Zoe Deschamps|Developer|active|2025-04-18|dev,docker
