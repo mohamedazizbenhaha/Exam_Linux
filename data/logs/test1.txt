@@ -1,0 +1,8 @@
+[2025-04-28 09:45:30] [WARNING] Configuration parameter MAX_THREADS not found, using default (88888)
+[2025-04-28 09:50:00] [INFO] Starting security module v3.2.10012
+[2025-04-28 09:50:30] [WARNING] Certificate expiring in 31360 days
+[2025-04-28 10:00:00] [INFO] Application started successfully - PID 12348
+[2025-04-28 10:00:15] [INFO] Database connection established on port 33060
+[2025-04-28 10:15:30] [WARNING] High CPU usage detected (95%) - PID 12348
+[2025-04-28 10:16:00] [WARNING] Network latency exceeds threshold (>50000ms)
+[2025-04-28 10:16:15] [ERROR] Failed to process batch job ID: 45678
