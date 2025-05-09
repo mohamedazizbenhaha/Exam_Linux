@@ -1,0 +1,2 @@
+43 /home/workspace/ExamLinux/data/logs/app.log
+334 /home/workspace/ExamLinux/data/logs/app.log
