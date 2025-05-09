@@ -1,0 +1,5 @@
+/home/student/examen/securite:
+total 8
+-rw------- 1 student student 27 May  9 15:55 confidentiel.txt
+-rw-rw-r-- 1 student student  0 May  9 16:08 permission_check.txt
+-rw-r--r-- 1 student student 21 May  9 15:55 public.txt
