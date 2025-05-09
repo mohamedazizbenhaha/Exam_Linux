@@ -1,0 +1,45 @@
+    1  mkdir securite
+    2  pwd
+    3  cd securite
+    4  echo "this file is confidential ! " > confidentiel.txt
+    5  echo "this file is public ! " > public.txt
+    6  chmod 600 confidentiel.txt 
+    7  chmod 644 public.txt
+    8  sudo chgrp ops ~/workspace/ExamLinux/securite
+    9  groupadd ops
+   10  sudo chgrp ops ~/workspace/ExamLinux/securite
+   11  sudp chrgp ops ~workspace/ExamLinux/securite
+   12  chrgp ops  ~/workspace/ExamLinux/securite
+   13  chrgp ops securite
+   14  chmod g+s securite
+   15  cd ..
+   16  chmod g+s securite
+   17  ls -R securite
+   18  ls -R securite > permissions_check.txt
+   19  exit
+   20  sudo groupadd testers
+   21  sudo user -m -G  testers test1
+   22  sudo useradd -m -G  testers test1
+   23  sudo useradd -m -G  testers test2
+   24  echo 'echo "bienvenue ! " > ~/bienvenue.txt | sudo tee /etc/skel/.bash_login
+echo ' testers ALL=(ALL) NOPASSWD : /bin/ping' | sudo tee /etc/sudoers.d/ping_testers
+   25  sudo cp /etc/sudoers /home/workspace/ExamLinux/archive/sudoers_copy.txt
+   26  cd /home/workspace/ExamLinux/test
+   27  ln -s .. /app/config.cgf shortcut_config
+   28  ln .. /app/readme.md hardlink_readme
+   29  ls -li shortcut-config hardlink-readme > ../data/logs/inode_before.txt
+   30  rm ../app/readme.md
+   31  ls -li shortcut_config hardlink_readme/logs/inodes_after.txt
+   32  grep -E '\b[0-9]{5}\b' .. /data/logs/app.log >> test1.txt
+   33  grep -E '\b[0-9]{5}\b' .. /data/logs/app.log >> test2.txt
+   34  wc -l ../data/logs/app.log >>stat.txt
+   35  wc -w ../data/logs/app.log >>stat.txt
+   36  grep -c "error" ../data/logs/app.log >> stat.txt
+   37  nano analyse_logs.sh
+   38  vi analyse_logs.sh
+   39  chmod +x analyse_logs.sh
+   40  cd ../test
+   41  cat ../data/users.txt ../data/logs/app.log > fusion.txt
+   42  sort fusion.txt > fusion_sorted.txt
+   43  uniq fusion_sorted.txt >> fusion_unique.txt
+   44  history > commands.txt

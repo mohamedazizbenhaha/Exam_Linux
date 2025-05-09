@@ -1,0 +1,73 @@
+Alice Dupont|Developer|active|2025-01-15|dev,docker
+Ahmed Ben Ali|Security|active|2025-04-22|security,pentesting|senior
+Barbara Wilson|Developer|active|2025-04-25|dev,ai|lead
+Bob Martin|System Admin|active|2024-12-01|admin,backup
+Carlos Rodriguez|System Admin|active|2025-04-19|admin,cloud|senior
+Charlie Durand|Developer|inactive|2025-02-28|dev
+Denis Dujardin|Security|active|2025-03-15|security,audit
+Diana Chen|Database Admin|active|2025-04-21|dba,security|lead
+Emilie Deville|Database Admin|active|2025-01-30|dba,backup
+Erik Nielsen|Network Admin|active|2025-04-23|network,cloud|senior
+Fabrice Denis|Network Admin|active|2024-11-15|network,security
+George Lemoine|Developer|active|2025-04-01|dev,testing
+Helene Dupuis|System Admin|active|2025-03-01|admin,security
+Isabelle Moreau|Security|active|2025-02-15|security,audit
+Jacques Lambert|Developer|inactive|2025-01-01|dev
+Kevin Thomas|Database Admin|active|2025-04-15|dba,backup
+Louise Martin|Network Admin|active|2025-03-30|network,monitoring
+Michel Dubois|Developer|active|2025-04-10|dev,docker
+Nicole Pascal|System Admin|active|2025-02-28|admin,security
+Oscar Renard|Security|active|2025-04-20|security,audit
+Patricia Klein|Developer|active|2025-03-25|dev,testing
+Robert Dumas|Database Admin|active|2025-04-01|dba,monitoring
+Sophie Vincent|Network Admin|active|2025-03-15|network,security
+Thomas Duval|Developer|active|2025-04-05|dev,docker
+Ulrich Bernard|System Admin|active|2025-02-01|admin,backup
+Victor Durant|Security|active|2025-04-12|security,audit
+William Dubois|Developer|active|2025-03-20|dev,testing
+Xavier Dupont|Database Admin|active|2025-04-08|dba,backup
+Yves Martin|Network Admin|active|2025-03-10|network,monitoring
+Zoe Deschamps|Developer|active|2025-04-18|dev,docker
+[2025-04-28 09:30:00] [INFO] System pre-initialization checks started
+[2025-04-28 09:30:15] [INFO] Checking system requirements
+[2025-04-28 09:30:30] [INFO] Memory available: 3.8GB/4GB
+[2025-04-28 09:30:45] [INFO] Disk space available: 18.5GB/20GB
+[2025-04-28 09:31:00] [WARNING] Swap usage higher than normal: 15%
+[2025-04-28 09:45:00] [INFO] System initialization started
+[2025-04-28 09:45:15] [INFO] Loading configuration from /etc/megaappx/config.cfg
+[2025-04-28 09:45:30] [WARNING] Configuration parameter MAX_THREADS not found, using default (88888)
+[2025-04-28 09:45:45] [INFO] Initializing database connections
+[2025-04-28 09:46:00] [INFO] Redis cache initialization started
+[2025-04-28 09:46:15] [WARNING] Redis memory limit approaching 75%
+[2025-04-28 09:50:00] [INFO] Starting security module v3.2.10012
+[2025-04-28 09:50:15] [INFO] Loading SSL certificates
+[2025-04-28 09:50:30] [WARNING] Certificate expiring in 31360 days
+[2025-04-28 09:55:00] [INFO] System boot sequence initiated
+[2025-04-28 09:55:15] [INFO] Loading kernel modules
+[2025-04-28 09:55:30] [ERROR] Failed to load module: network_optimizer
+[2025-04-28 10:00:00] [INFO] Application started successfully - PID 12348
+[2025-04-28 10:00:15] [INFO] Database connection established on port 33060
+[2025-04-28 10:00:30] [INFO] Backup service initialized
+[2025-04-28 10:02:30] [INFO] User authentication service started
+[2025-04-28 10:05:00] [WARNING] Memory usage exceeds 80% (Used: 3.2GB/4GB)
+[2025-04-28 10:07:23] [ERROR] Database connection lost - Connection timeout after 30s
+[2025-04-28 10:07:24] [INFO] Attempting reconnect - Try 1/3
+[2025-04-28 10:07:45] [WARNING] Reconnection failed - Try 1
+[2025-04-28 10:08:00] [INFO] Attempting reconnect - Try 2/3
+[2025-04-28 10:09:00] [INFO] Reconnection successful after 2 attempts
+[2025-04-28 10:10:15] [INFO] Cache sync completed - 1500 entries processed
+[2025-04-28 10:15:30] [WARNING] High CPU usage detected (95%) - PID 12348
+[2025-04-28 10:16:00] [WARNING] Network latency exceeds threshold (>50000ms)
+[2025-04-28 10:16:15] [ERROR] Failed to process batch job ID: 45678
+[2025-04-28 10:16:30] [WARNING] Queue size exceeding normal limits
+[2025-04-28 10:17:45] [ERROR] SYSTEM FAILURE: code 404 - Service unavailable
+[2025-04-28 10:18:00] [ERROR] Failed to write to /var/log/megaappx/backup.log
+[2025-04-28 10:20:00] [INFO] Starting automatic recovery procedure
+[2025-04-28 10:20:15] [INFO] Attempting system restore point recovery
+[2025-04-28 10:20:30] [WARNING] Partial recovery achieved
+[2025-04-28 10:25:00] [WARNING] Cache hit ratio below threshold (45%)
+[2025-04-28 10:30:00] [INFO] System shutdown initiated - graceful termination
+[2025-04-28 10:30:15] [INFO] Active connections terminated: 15
+[2025-04-28 10:30:30] [INFO] Database connections closed
+[2025-04-28 10:30:45] [INFO] Cache cleared successfully
+[2025-04-28 10:31:00] [INFO] System shutdown completed
