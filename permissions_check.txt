@@ -1,0 +1,3 @@
+total 8
+-r-xr-xr-x 1 root root 20 May  9 15:39 public.txt
+---x------ 1 root root 28 May  9 15:37 confidentiel.txt

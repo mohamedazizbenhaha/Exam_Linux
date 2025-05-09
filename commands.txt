@@ -1,0 +1,5 @@
+    1  history > commands.txt
+    2  cat commands.txt
+    3  cat commands_root.txt
+    4  cd /home/workspace/ExamLinux
+    5  history > commands.txt

@@ -1,1 +1,3 @@
 
+Denis Dujardin|Security|active|2025-03-15|security,audit
+Diana Chen|Database Admin|active|2025-04-21|dba,security|lead

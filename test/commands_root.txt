@@ -1,0 +1,42 @@
+    1  ls -i > ../data/logs/inodes_before.txt
+    2  rm ../app/readme.md
+    3  ls -i
+    4  ls -i > ../data/logs/inodes_after.txt
+    5  cd ../data/logs
+    6  ls
+    7  grep [0-9] app.log
+    8  grep ^[0-9][0-9][0-9][0-9][0-9]$ app.log
+    9  cd ..
+   10  ls
+   11  grep ^D users.txt
+   12  grep --help
+   13  grep ^D users.txt >> ../test/test2.txt
+   14  cd ..
+   15  ls
+   16  cd test
+   17  ls
+   18  wc -l ../data/logs/app.log > stats.txt
+   19  wc -w ../data/logs/app.log >> stats.txt
+   20  grep -c ERROR ../data/logs/app.log >> stats.txt
+   21  cat stats.txt
+   22  cd ../app
+   23  ls
+   24  touch analyse_logs.sh
+   25  chmod a+x analyse_logs.sh
+   26  vi analyse_logs.sh
+   27  ./analyse_logs.sh
+   28  cd ../test
+   29  ls
+   30  cat ../data/users.txt > fusion.txt
+   31  cat ../data/logs/app.log >> fusion.txt
+   32  cat fusion.txt
+   33  sort fusion.txt > fusion_sorted.txt
+   34  vi fusion_sorted.tct
+   35  sort --help
+   36  rm fusion_sorted.txt
+   37  sort -o fusion_sorted.txt fusion.txt
+   38  cat fusion_sorted.txt
+   39  uniq --help
+   40  uniq fusion_sorted.txt > fusion_unique.txt
+   41  cat fusion_unique.txt
+   42  history > commands_root.txt
