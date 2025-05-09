@@ -1,0 +1,200 @@
+    1  useradd  - m student  
+    2  useradd -m student
+    3  passwd student 
+    4  usermod -aG sudo student
+    5  echo 'student ALL =(ALL) NOPASSWD:ALL'>/etc/sudoers.d/student
+    6  runuser -l student c 
+    7  runuser -l student c '
+#mkdir 
+mkdir p ~/exam/securite/
+echo 'this file is is confidential">confidentiel.txt
+echo 'this file is public">public.txt
+    8  chmod 600 confidentiel.txt
+    9  runuser -l student c '
+#mkdir 
+mkdir p ~/exam/securite/
+echo 'this file is is confidential">confidentiel.txt
+echo 'this file is public">public.txt
+   10  mkdir p ~/exam/securite/
+   11  runuser -l student c '
+#mkdir 
+mkdir p ~/exam/securite/
+echo 'this file is is confidential">confidentiel.txt
+echo 'this file is public">public.txt.
+   12  runuser -l student c '
+#mkdir 
+mkdir p ~/exam/securite/
+echo 'this file is is confidential">confidentiel.txt
+echo 'this file is public"> public.txt 
+   13  runuser -l student c '
+#mkdir 
+mkdir p ~/exam/securite/
+cd ~/exam/securite/
+echo "this file is confidentiel">confidentiel.txt
+echo 'this file is public ">public.txt
+chmod 600 confidentiel.txt
+chmod 644 public.txt
+sudo chgrp ops
+chmod g+s 
+ls -lR >~/examen/permission_check.txt
+'
+exit
+end
+g
+q
+   14  ll
+   15  su student 
+   16  su -student 
+   17  useradd -m student 
+   18  echo "student:student"| chpasswd
+   19  usermod -aG sudo student
+   20  echo 'student ALL=(ALL) NOPASSWD:ALL'> etc/sudoers.d/student
+   21  su -student 
+   22  sudo su -student
+   23  sudo su - student
+   24  useradd tester1:testers
+   25  useradd tester1
+   26  groupadd testers
+   27  useradd -m -G testers tester1
+   28  userdel tester1
+   29  useradd -m -G testers tester1
+   30  useradd -m -G users,testers tester2
+   31  echo "bienvenue"> etc/skel/bienvenue.txt
+   32  cp /etc/skel/bienvenue.txt /home/tester1/
+   33  cp /etc/skel/bienvenue.txt /home/tester2/
+   34  chown tester1:testers /home/tester1/bienvenue.txt
+   35  chown tester2:testers /home/tester2/bienvenue.txt
+   36  echo '%testers ALL=(ALL) NOPASSWD: /bin/ping' > /etc/sudoers.d/testers_ping
+   37  cp /etc/sudoers /home/student/sudoers_copy.txt
+   38  chown student:student /home/student/sudoers_copy.txt
+   39  mkdir -p ~/examen/test ~/examen/app ~/examen/logs
+   40  touch ~/examen/app/config.cfg ~/examen/app/readme.md
+   41  ln -s ../app/config.cfg ~/examen/test/shortcut_config
+   42  ln ~/examen/app/readme.md ~/examen/test/hardlink_readme
+   43  ls -li ~/examen/test > ~/examen/logs/inodes_before.txt
+   44  rm ~/examen/app/readme.md
+   45  ls -li ~/examen/test > ~/examen/logs/inodes_after.txt
+   46  grep -E "\b[0-9]{5}\b" ~/examen/app.log >> ~/examen/test1.txt
+   47  grep -p -E "\b[0-9]{5}\b" ~/examen/app.log >> ~/examen/test1.txt
+   48  grep  -E "\b[0-9]{5}\b" ~/examlinux/app.log >> ~/examlinux/test1.txt
+   49  grep -E "\bD[a-zA-Z]*\b" ~/examen/users.txt > ~/examen/test2.txt
+   50  grep  -E "\b[0-9]{5}\b" /app.log >> /test1.txt
+   51  grep -E "\bD[a-zA-Z]*\b" ~/examen/users.txt > ~/examen/test2.txt
+   52  echo "Total lignes: $(wc -l < ~/examen/app.log)" > ~/examen/test/stats.txt
+   53  grep -E "\bD[a-zA-Z]*\b" ~/examen/users.txt > ~/examen/test2.txt
+   54  touch ~/examen/app/config.cfg /home/workspace/examLinux/app/readme.md
+   55  ln -s ~/workspace/examLinux/app/config.cfg ~/workspace/examLinux/test/shortcut_confi
+   56  ln -s ~/workspace/examLinux/app/config.cfg ~/workspace/examLinux/test/shortcut_config
+   57  grep -E "\b[0-9]{5}\b" /home/workspace/examLinux/logs/app.log >> /home/workspace/examLinux/test/test1.txt
+   58  grep -E "\bD[a-zA-Z]*\b" /home/workspace/examLinux/logs/users.txt > /home/workspace/examLinux/test/test2.txt
+   59  echo "Total lignes: $(wc -l < /home/workspace/examLinux/logs/app.log)" > /home/workspace/examLinux/test/stats.txt
+   60  echo "Total mots: $(wc -w < /home/workspace/examLinux/logs/app.log)" >> /home/workspace/examLinux/test/stats.txt
+   61  echo "Lignes avec ERROR: $(grep -c ERROR /home/workspace/examLinux/logs/app.log)" >> /home/workspace/examLinux/test/stats.txt
+   62  mkdir -p /home/workspace/examLinux/app/data
+   63  vim analyse_logs.sh
+   64  chmod +x /home/workspace/examLinux/app/analyse_logs.sh
+   65  cat /home/workspace/examLinux/logs/users.txt /home/workspace/examLinux/logs/app.log > /home/workspace/examLinux/test/fusion.txt
+   66  sort /home/workspace/examLinux/test/fusion.txt > /home/workspace/examLinux/test/fusion_sorted.txt
+   67  ll
+   68  useradd -m student
+   69  runuser -l student -c
+   70  runuser -l student -c'
+mkdir -p /home/workspace/examLinux/test /home/workspace/examLinux/app /home/workspace/examLinux/logs
+touch /home/workspace/examLinux/app/config.cfg /home/workspace/examLinux/app/readme.md
+ln -s ../app/config.cfg /home/workspace/examLinux/test/shortcut_config
+ln /home/workspace/examLinux/app/readme.md /home/workspace/examLinux/test/hardlink_readme
+ls -li /home/workspace/examLinux/test > /home/workspace/examLinux/logs/inodes_before.txt
+rm /home/workspace/examLinux/app/readme.md
+ls -li /home/workspace/examLinux/test > /home/workspace/examLinux/logs/inodes_after.txt'
+   71  chown student:student /home/workspace/examLinux/archive/sudoers_copy.txt
+   72  echo '%testers ALL=(ALL) NOPASSWD: /bin/ping' > /etc/sudoers.d/testers_ping
+   73  cp /etc/sudoers /home/workspace/examLinux/archive/sudoers_copy.txt
+   74  runuser -l student -c '
+rep -E "\b[0-9]{5}\b" /home/workspace/examLinux/logs/app.log >> /home/workspace/examLinux/test/test1.txt
+grep -E "\bD[a-zA-Z]*\b" /home/workspace/examLinux/logs/users.txt > /home/workspace/examLinux/test/test2.txt
+echo "Total lignes: $(wc -l < /home/workspace/examLinux/logs/app.log)" > /home/workspace/examLinux/test/stats.txt
+echo "Total mots: $(wc -w < /home/workspace/examLinux/logs/app.log)" >> /home/workspace/examLinux/test/stats.txt
+echo "Lignes avec ERROR: $(grep -c ERROR /home/workspace/examLinux/logs/app.log)" >> /home/workspace/examLinux/test/stats.txt'
+   75  runuser -l student -c '
+mkdir -p /home/workspace/examLinux/app/data
+cat > /home/workspace/examLinux/app/analyse_logs.sh << EOF
+#!/bin/bash
+if ! groups | grep -q "\bsudo\b"; then
+  echo "Vous devez appartenir au groupe sudo"
+  exit 1
+fi
+
+logdir="/home/workspace/examLinux/logs"
+rapport="/home/workspace/examLinux/logs/rapport_logs.txt"
+
+for file in "\$logdir"/*.log; do
+  echo "Fichier: \$(basename "\$file")" >> "\$rapport"
+  echo "ERROR: \$(grep -c ERROR "\$file")" >> "\$rapport"
+  echo "WARNING: \$(grep -c WARNING "\$file")" >> "\$rapport"
+  echo "INFO: \$(grep -c INFO "\$file")" >> "\$rapport"
+  echo "----" >> "\$rapport"
+done
+EOF
+chmod +x /home/workspace/examLinux/app/analyse_logs.sh'
+   76  runuser -l student -c '
+cat /home/workspace/examLinux/logs/users.txt /home/workspace/examLinux/logs/app.log > /home/workspace/examLinux/test/fusion.txt
+sort /home/workspace/examLinux/test/fusion.txt > /home/workspace/examLinux/test/fusion_sorted.txt
+uniq /home/workspace/examLinux/test/fusion_sorted.txt > /home/workspace/examLinux/test/fusion_unique.txt
+'
+   77  mkdir -p /home/workspace/examLinux/{app,test,logs,archive}
+   78  chown -R student:student /home/workspace/examLinux/
+   79  chmod 755 /home/workspace/examLinux/{app,test,logs,archive}
+   80  touch /home/workspace/examLinux/logs/{app.log,auth.log,backup.log,network.log,system.log,users.txt}
+   81  chown student:student /home/workspace/examLinux/logs/*
+   82  mkdir -p /home/workspace/examLinux/{app,test,logs,archive,securite}
+   83  chown -R student:student /home/workspace/examLinux
+   84  runuser -l student -c '
+mkdir -p ~/examLinux/test ~/examLinux/app ~/examLinux/logs
+touch ~/examLinux/app/config.cfg ~/examLinux/app/readme.md
+ln -s ../app/config.cfg ~/examLinux/test/shortcut_config
+ln ~/examLinux/app/readme.md ~/examLinux/test/hardlink_readme
+ls -li ~/examLinux/test > ~/examLinux/logs/inodes_before.txt
+rm ~/examLinux/app/readme.md
+ls -li ~/examLinux/test > ~/examLinux/logs/inodes_after.txt'
+   85  runuser -l student -c '
+grep -E "\b[0-9]{5}\b" ~/examLinux/logs/app.log >> ~/examLinux/test/test1.txt
+grep -E "\bD[a-zA-Z]*\b" ~/examLinux/logs/users.txt > ~/examLinux/test/test2.txt
+echo "Total lignes: $(wc -l < ~/examLinux/logs/app.log)" > ~/examLinux/test/stats.txt
+echo "Total mots: $(wc -w < ~/examLinux/logs/app.log)" >> ~/examLinux/test/stats.txt
+echo "Lignes ERROR: $(grep -c ERROR ~/examLinux/logs/app.log)" >> ~/examLinux/test/stats.txt'
+   86  runuser -l student -c '
+cat > ~/examLinux/app/analyse_logs.sh << EOF
+#!/bin/bash
+logdir="\$1"
+rapport="\$HOME/examLinux/logs/rapport_logs.txt"
+
+for file in "\$logdir"/*.log; do
+  echo "Fichier: \$(basename "\$file")" >> "\$rapport"
+  echo "ERROR: \$(grep -c ERROR "\$file")" >> "\$rapport"
+  echo "WARNING: \$(grep -c WARNING "\$file")" >> "\$rapport"
+  echo "INFO: \$(grep -c INFO "\$file")" >> "\$rapport"
+  echo "----" >> "\$rapport"
+done
+EOF
+chmod +x ~/examLinux/app/analyse_logs.sh'
+   87  runuser -l student -c '
+cat ~/examLinux/logs/users.txt ~/examLinux/logs/app.log | sort | uniq > ~/examLinux/test/fusion_unique.txt'
+   88  ls -l /home/student/examLinux/logs/
+   89  mkdir -p /home/student/examLinux/logs
+   90  touch /home/student/examLinux/logs/{users.txt,app.log}
+   91  chown -R student:student /home/student/examLinux
+   92  chmod 755 /home/student/examLinux/logs
+   93  chmod 644 /home/student/examLinux/logs/*
+   94  runuser -l student -c '
+cat /home/student/examLinux/logs/users.txt \
+    /home/student/examLinux/logs/app.log \
+    | sort | uniq > ~/examLinux/test/fusion_unique.txt'
+   95  cd ~
+   96  cd ..
+   97  history>>commands.txt
+   98  git add .
+   99  cd /home/workspace/examLinux/
+  100  git add .
+  101  cd /home/workspace/ExamLinux/
+  102  git add .
+  103  history >> commands.txt

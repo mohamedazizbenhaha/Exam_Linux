@@ -1,0 +1,3 @@
+Total lignes: 
+Total mots: 
+Lignes ERROR: 
