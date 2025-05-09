@@ -1,0 +1,2 @@
+ 3902 -rw-r--r-- 2 root root 1261 Apr 28 22:11 hardlink_readme
+10449 lrwxrwxrwx 1 root root   17 May  9 16:01 shortcut_config -> ../app/config.cfg

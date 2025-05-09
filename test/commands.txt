@@ -1,0 +1,30 @@
+    1  echo "student:20042003" | chpasswd
+    2  usermod -aG sudo student 
+    3  echo "student ALL=(ALL) NOPASSWD :ALL" > /etc/sudoers.d/student_nopasswd
+    4  chmod 440 /etc/sudoers.d/student_nopasswd
+    5  su - student
+    6  echo "student ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/student_nopasswd
+    7  su - student 
+    8  cd /home/workspace/ExamLinux/test
+    9  ln -s ../app/config.cfg shortcut_config
+   10  ln ../app/readme.md hardlink_readme
+   11  ls -li shortcut_config hardlink_readme > ../data/logs/inodes_before.txt
+   12  rm ../app/readme.md
+   13  ls -li shortcut_config hardlink_readme > ../data/logs/inodes_after.txt
+   14  grep -E '\b[0-9]{5}\b' ../data/logs/app.log >> test1.txt
+   15  grep -E '\bD[a-zA-Z]*\b' ../data/users.txt > test2.txt
+   16  wc -l ../data/logs/app.log > stats.txt
+   17  wc -w ../data/logs/app.log >> stats.txt
+   18  grep -c "ERROR" ../data/logs/app.log >> stats.txt
+   19  cd ../app
+   20  cat > analyse_logs.sh << 'EOF'
+   21  nano analyse_logs.sh
+   22  touch analyse_logs.sh
+   23  nano analyse_logs.sh
+   24  vi analyse.sh
+   25  chmod +x analyse_logs.sh
+   26  ./analyse_logs.sh ../data/logs
+   27  cd ../test
+   28  cat ../data/users.txt ../data/logs/app.log > fusion.txt
+   29  sort fusion.txt > fusion_sorted.txt
+   30  history > commands.txt
