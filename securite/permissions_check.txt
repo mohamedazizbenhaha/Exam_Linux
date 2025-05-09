@@ -1,0 +1,4 @@
+/home/workspace/ExamLinux/securite:
+total 8
+-r--r--r-- 1 root root 28 May  9 15:39 confidentiel.txt
+-rw-r--r-- 1 root root 22 May  9 15:36 public.txt

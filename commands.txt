@@ -1,0 +1,144 @@
+    1  sudo mkdir /home/workspace/ExamLinux/securite
+    2  exit
+    3* 
+    4  exit
+    5  echo "this file is confidential !" > /home/workspace/ExamLinux/securite/confidentiel.txt
+    6  sudo echo "this file is confidential !" > /home/workspace/ExamLinux/securite/confidentiel.txt
+    7  echo "this file is confidential !" | tee /home/workspace/ExamLinux/securite/confidentiel.txt
+    8  touch /home/workspace/ExamLinux/securite/confidentiel.txt
+    9  sudo touch /home/workspace/ExamLinux/securite/confidentiel.txt
+   10  sudo vi /home/workspace/ExamLinux/securite/confidentiel.txt
+   11  cat /home/workspace/ExamLinux/securite/confidentiel.txt
+   12  sudo touch /home/workspace/ExamLinux/securite/public.txt
+   13  sudo vi /home/workspace/ExamLinux/securite/public.txt
+   14  echo "this file is confidential !" | sudo tee /home/workspace/ExamLinux/securite/confidentiel.txt
+   15  sudo vi /home/workspace/ExamLinux/securite/confidentiel.txt
+   16  echo "this file is public !" | tee /home/workspace/ExamLinux/securite/public.txt
+   17  sudo chmod 700 /home/workspace/ExamLinux/securite/confidentiel.txt
+   18  sudo chmod 444 /home/workspace/ExamLinux/securite/confidentiel.txt
+   19  chgrp -h
+   20* chgrp 
+   21  sudo groupadd ops
+   22  sudo chgrp ops /home/workspace/ExamLinux/securite
+   23  chmod g+s ops /home/workspace/ExamLinux/securite
+   24  sudo chmod g+s ops /home/workspace/ExamLinux/securite
+   25  sudo chmod g+s /home/workspace/ExamLinux/securite
+   26  ls -l /home/workspace/ExamLinux/securite
+   27* ls -Rl /home/workspace/ExamLinux/
+   28  ls -h
+   29  ls -Rl /home/workspace/ExamLinux/securite > /home/workspace/ExamLinux/securite/permissions_check.txt 
+   30  sudo ls -Rl /home/workspace/ExamLinux/securite > /home/workspace/ExamLinux/securite/permissions_check.txt 
+   31  ls -Rl /home/workspace/ExamLinux/securite | sudo tee /home/workspace/ExamLinux/securite/permissions_check.txt 
+   32  sudo vi /home/workspace/ExamLinux/securite/permissions_check.txt 
+   33  sudo ls /home/workspace/ExamLinux
+   34  sudo ls -l /home/workspace/ExamLinux
+   35  addgroup testers
+   36  sudo addgroup testers
+   37  sudo adduser -m -aG testers tester1
+   38  sudo adduser -m tester1
+   39  sudo adduser --home tester1
+   40  sudo adduser tester1
+   41  sudo adduser tester2
+   42  sudo touch /etc/skel/bienvenue.txt
+   43  visudo
+   44  sudo visudo
+   45  cat </etc/sudoers >> /home/workspace/ExamLinux/archive/sudoers_copy.txt
+   46  sudo cat </etc/sudoers >> /home/workspace/ExamLinux/archive/sudoers_copy.txt
+   47  cat </etc/sudoers | sudo tee /home/workspace/ExamLinux/archive/sudoers_copy.txt
+   48  cat /etc/sudoers | sudo tee /home/workspace/ExamLinux/archive/sudoers_copy.txt
+   49  sudo cat /etc/sudoers | sudo tee /home/workspace/ExamLinux/archive/sudoers_copy.txt
+   50  sudo vi /home/workspace/ExamLinux/archive/sudoers_copy.txt
+   51  sudo addgrp
+   52  sudo usermod -aG users tester2
+   53  sudo groups tester2
+   54  sudo usermod -G testers tester2
+   55  sudo groups tester2
+   56  sudo usermod -aG testers,users tester2
+   57  sudo groups tester2
+   58  cd /home/workspace/ExamLinux/archive/sudoers_copy.txt
+   59  cd /home/workspace/ExamLinux/test
+   60  sudo visudo
+   61  sudo cat /etc/sudoers | sudo tee /home/workspace/ExamLinux/archive/sudoers_copy.txt
+   62  cd /home/workspace/ExamLinux/archive/sudoers_copy.txt
+   63  sudo visudo /home/workspace/ExamLinux/archive/sudoers_copy.txt
+   64  cd ..
+   65  ln -s shortcut_config app/config.cfg
+   66  ls
+   67  ls app
+   68  sudo ln -s shortcut_config app/config.cfg
+   69  sudo ln -s shortcut_config ./app/config.cfg
+   70  sudo ln -h
+   71  ln --help
+   72  sudo ln -s /app/config.cfg shortcut_config
+   73  sudo ln /app/readme.md hardlink_readme
+   74  sudo ln app/readme.md hardlink_readme
+   75  ls -i shortcut_config > logs/inodes_before.txt
+   76  ls -i shortcut_config > data/logs/inodes_before.txt
+   77  sudo ls -i shortcut_config > data/logs/inodes_before.txt
+   78  ls -i shortcut_config | sudo tee data/logs/inodes_before.txt
+   79* ls -i hardlink_readme | sudo tee -a data/logs/inodes_after.txt
+   80  sudo visudo data/logs/inodes_before.txt
+   81  sudo rm app/readme.md
+   82  ls -i shortcut_config | sudo tee data/logs/inodes_after.txt
+   83  ls -i hardlink_readme | sudo tee data/logs/inodes_after.txt
+   84  ls app
+   85  cd data/logs
+   86  grep -h
+   87  grep --help
+   88  sudo grep [0-9][0-9][0-9][0-9][0-9] app.log | sudo tee -a /home/workspace/ExamLinux/test/test1.txt 
+   89  cd .
+   90  cd ..
+   91  vi users.txt
+   92  grep --help
+   93  sudo grep -f2 D* ./users.txt | sudo tee -a /home/workspace/ExamLinux/test/test2.txt 
+   94* sudo grep D* ./users.txt | sudo tee - /home/workspace/ExamLinux/test/test2.txt 
+   95  vi ./test/test2
+   96  cd ..
+   97  cd test
+   98  touch stats.txt
+   99  sudo touch stats.txt
+  100  sudo wc -l /home/worksapce/ExamLinux/data/logs/app.log | sudo tee stats.txt
+  101  cd ..
+  102  sudo wc -l /home/worksapce/ExamLinux/data/logs/app.log | sudo tee test/stats.txt
+  103  sudo wc -l home/worksapce/ExamLinux/data/logs/app.log | sudo tee test/stats.txt
+  104  sudo wc -l /home/workspace/ExamLinux/data/logs/app.log | sudo tee test/stats.txt
+  105  sudo wc -l < /home/workspace/ExamLinux/data/logs/app.log | sudo tee test/stats.txt
+  106  sudo wc -w < /home/workspace/ExamLinux/data/logs/app.log | sudo tee -a test/stats.txt
+  107  sudo grep -c ERROR /home/workspace/ExamLinux/data/logs/app.log | sudo tee -a test/stats.txt
+  108  sudo vi test/stats.txt
+  109  cd app
+  110  groups
+  111  touch analyse_logs.sh
+  112  sudo touch analyse_logs.sh
+  113  vi analyse_logs.sh
+  114  sudo vi analyse_logs.sh
+  115  chmod +x analyse_logs.sh
+  116  sudo chmod +x analyse_logs.sh
+  117  cd..
+  118  cd .
+  119  cd ..
+  120  cd..
+  121  cd test
+  122  cat users.txt app.log > fusion.txt
+  123  sudo /home/workspace/ExamLinux/data/users.txt /home/workspace/ExamLinux/data/logs/app.log > fusion.txt
+  124  sudo cat /home/workspace/ExamLinux/data/users.txt /home/workspace/ExamLinux/data/logs/app.log | sudo tee fusion.txt
+  125  sudo sort fusion.txt | sudo tee fusion_sorted.txt 
+  126  sudo uniq fusion_sorted.txt | sudo tee fusion_unique.txt
+  127  cd 
+  128  history 
+  129  history | sudo tee -a /home/workspace/ExamLinux/commands.txt
+    1  adduser student
+    2  visudo
+    3  nano /etc/sudoers
+    4  usermod -h
+    5  vi /etc/etc
+    6  usermod -aG sudo student
+    7  visudo
+    8  vi /etc/sudoers.d
+    9  visudo
+   10  su - student
+   11  visudo
+   12  su - student
+   13  sudo history | sudo tee -a /home/workspace/examLinux/commands.txt
+   14  sudo history | sudo tee -a /home/workspace/ExamLinux/commands.txt
+   15  history | sudo tee -a /home/workspace/ExamLinux/commands.txt
