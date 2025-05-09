@@ -1,0 +1,5 @@
+.:
+total 8
+-rw------- 1 root root 27 May  9 16:07 confidentiel.txt
+-rw-r--r-- 1 root ops   0 May  9 16:14 permissions_check.txt
+-rw-r--r-- 1 root root 21 May  9 16:07 public.txt
