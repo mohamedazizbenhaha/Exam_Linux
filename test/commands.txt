@@ -1,0 +1,21 @@
+    1  useradd student
+    2  passwd student
+    3  usermod -aG sudo student
+    4  visudo
+    5  su - student
+    6  cd test
+    7  cd /home/workspace/ExamLinux/test
+    8  exit
+    9  history > commands.txt
+    1  useradd student
+    2  passwd student
+    3  usermod -aG sudo student
+    4  visudo
+    5  su - student
+    6  cd test
+    7  cd /home/workspace/ExamLinux/test
+    8  exit
+    9  history > commands.txt
+   10  ls commands.txt
+   11  vi commands.txt
+   12  history >> commands.txt
