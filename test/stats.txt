@@ -1,0 +1,3 @@
+Lignes: 43
+Mots: 334
+Lignes avec ERROR: 5
