@@ -1,0 +1,30 @@
+Alice Dupont|Developer|active|2025-01-15|dev,docker
+Ahmed Ben Ali|Security|active|2025-04-22|security,pentesting|senior
+Barbara Wilson|Developer|active|2025-04-25|dev,ai|lead
+Bob Martin|System Admin|active|2024-12-01|admin,backup
+Carlos Rodriguez|System Admin|active|2025-04-19|admin,cloud|senior
+Charlie Durand|Developer|inactive|2025-02-28|dev
+Denis Dujardin|Security|active|2025-03-15|security,audit
+Diana Chen|Database Admin|active|2025-04-21|dba,security|lead
+Emilie Deville|Database Admin|active|2025-01-30|dba,backup
+Erik Nielsen|Network Admin|active|2025-04-23|network,cloud|senior
+Fabrice Denis|Network Admin|active|2024-11-15|network,security
+George Lemoine|Developer|active|2025-04-01|dev,testing
+Helene Dupuis|System Admin|active|2025-03-01|admin,security
+Isabelle Moreau|Security|active|2025-02-15|security,audit
+Jacques Lambert|Developer|inactive|2025-01-01|dev
+Kevin Thomas|Database Admin|active|2025-04-15|dba,backup
+Louise Martin|Network Admin|active|2025-03-30|network,monitoring
+Michel Dubois|Developer|active|2025-04-10|dev,docker
+Nicole Pascal|System Admin|active|2025-02-28|admin,security
+Oscar Renard|Security|active|2025-04-20|security,audit
+Patricia Klein|Developer|active|2025-03-25|dev,testing
+Robert Dumas|Database Admin|active|2025-04-01|dba,monitoring
+Sophie Vincent|Network Admin|active|2025-03-15|network,security
+Thomas Duval|Developer|active|2025-04-05|dev,docker
+Ulrich Bernard|System Admin|active|2025-02-01|admin,backup
+Victor Durant|Security|active|2025-04-12|security,audit
+William Dubois|Developer|active|2025-03-20|dev,testing
+Xavier Dupont|Database Admin|active|2025-04-08|dba,backup
+Yves Martin|Network Admin|active|2025-03-10|network,monitoring
+Zoe Deschamps|Developer|active|2025-04-18|dev,docker

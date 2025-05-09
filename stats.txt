@@ -1,0 +1,3 @@
+-e Nb total de lignes: 
+Nb total de mots: 
+Nb de lignes avec ERROR: 
