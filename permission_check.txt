@@ -1,0 +1,4 @@
+securite:
+total 8
+-rw------- 1 root root 29 May  9 15:39 confidentiel.txt
+-r--r--r-- 1 root root 22 May  9 15:42 public.txt
