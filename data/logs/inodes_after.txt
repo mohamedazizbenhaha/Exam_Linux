@@ -1,0 +1,4 @@
+ 5522 /home/workspace/ExamLinux/test/hardlink_readme
+12083 /home/workspace/ExamLinux/test/shortcut_config
+ 5534 /home/workspace/ExamLinux/test/test1.txt
+ 5535 /home/workspace/ExamLinux/test/test2.txt
