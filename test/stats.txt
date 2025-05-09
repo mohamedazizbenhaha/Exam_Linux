@@ -1,0 +1,3 @@
+Nombre total de lignes: 43
+Nombre total de mots: 334
+Nombre de lignes contenant ERROR: 5

@@ -1,0 +1,604 @@
+Microsoft Windows [version 10.0.26100.3775]
+(c) Microsoft Corporation. Tous droits réservés.
+
+C:\Users\asus>docker run -it  mohamedazizbenhaha/linux_exam:v1 bash
+root@ee827eef645a:/# sudo adduser student
+Adding user `student' ...
+Adding new group `student' (1000) ...
+Adding new user `student' (1000) with group `student' ...
+Creating home directory `/home/student' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for student
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n]
+root@ee827eef645a:/# sudo passwd student
+New password:
+Retype new password:
+passwd: password updated successfully
+root@ee827eef645a:/# sudo usermod -aG sudo student
+root@ee827eef645a:/# echo "student ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/student
+student ALL=(ALL) NOPASSWD:ALL
+root@ee827eef645a:/# su - student
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+student@ee827eef645a:~$ mkdir -p examen/securite/
+student@ee827eef645a:~$ echo "This file is confidential!" > examen/securite/confidentiel.txt
+student@ee827eef645a:~$ echo "This file is public!" > examen/securite/public.txt
+student@ee827eef645a:~$ chmod 600 examen/securite/confidentiel.txt
+student@ee827eef645a:~$ chmod 644 examen/securite/public.txt
+student@ee827eef645a:~$ sudo chgrp ops examen/securite/
+chgrp: invalid group: 'ops'
+student@ee827eef645a:~$ sudo groupadd ops
+student@ee827eef645a:~$ sudo chgrp ops examen/securite/
+student@ee827eef645a:~$ sudo chmod g+s examen/securite/
+student@ee827eef645a:~$ ls -lR examen/securite/ > examen/securite/permissions_check.txt
+student@ee827eef645a:~$ cat examen/securite/permissions_check.txt
+examen/securite/:
+total 8
+-rw------- 1 student student 27 May  9 15:36 confidentiel.txt
+-rw-rw-r-- 1 student ops      0 May  9 15:42 permissions_check.txt
+-rw-r--r-- 1 student student 21 May  9 15:36 public.txt
+student@ee827eef645a:~$ sudo adduser tester1 --ingroup testers
+adduser: The group `testers' does not exist.
+student@ee827eef645a:~$ sudo groupadd testers
+student@ee827eef645a:~$ sudo adduser tester1 --ingroup testers
+Adding user `tester1' ...
+Adding new user `tester1' (1001) with group `testers' ...
+Creating home directory `/home/tester1' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for tester1
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n]
+student@ee827eef645a:~$ sudo adduser tester2
+Adding user `tester2' ...
+Adding new group `tester2' (1003) ...
+Adding new user `tester2' (1002) with group `tester2' ...
+Creating home directory `/home/tester2' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for tester2
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n]
+student@ee827eef645a:~$ sudo usermod -aG users,testers tester2
+student@ee827eef645a:~$ echo "echo 'Bienvenue!' > \$HOME/bienvenue.txt" | sudo tee /etc/skel/.profile
+-bash: !': event not found
+student@ee827eef645a:~$ echo 'echo "Bienvenue!" > $HOME/bienvenue.txt' | sudo tee /etc/skel/.profile
+echo "Bienvenue!" > $HOME/bienvenue.txt
+student@ee827eef645a:~$ echo "%testers ALL=(ALL) NOPASSWD:/bin/ping" | sudo tee /etc/sudoers.d/ping
+%testers ALL=(ALL) NOPASSWD:/bin/ping
+student@ee827eef645a:~$ sudo cp /etc/sudoers examen/sudoers_copy.txt
+student@ee827eef645a:~$ cat examen/sudoers_copy.txt
+cat: examen/sudoers_copy.txt: Permission denied
+student@ee827eef645a:~$ ln -s app/config.cfg test/shortcut_config
+ln: failed to create symbolic link 'test/shortcut_config': No such file or directory
+student@ee827eef645a:~$ pwd
+/home/student
+student@ee827eef645a:~$ cd ..
+student@ee827eef645a:/home$ ls
+student  tester1  tester2  workspace
+student@ee827eef645a:/home$ cd workspace/ExamLinux
+student@ee827eef645a:/home/workspace/ExamLinux$ ln -s app/config.cfg test/shortcut_config
+ln: failed to create symbolic link 'test/shortcut_config': Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo ln -s app/config.cfg test/shortcut_config
+student@ee827eef645a:/home/workspace/ExamLinux$ ln app/readme.md test/hardlink_readme
+ln: failed to create hard link 'test/hardlink_readme' => 'app/readme.md': Operation not permitted
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo ln app/readme.md test/hardlink_readme
+student@ee827eef645a:/home/workspace/ExamLinux$ find test/ -printf "%i %p\n" > logs/inodes_before.txt
+-bash: logs/inodes_before.txt: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux$ find test/ -printf "%i %p\n" > data/logs/inodes_before.txt
+-bash: data/logs/inodes_before.txt: Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo  find test/ -printf "%i %p\n" > data/logs/inodes_before.txt
+-bash: data/logs/inodes_before.txt: Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux$ ls -ld data/logs/
+drwxr-xr-x 2 root root 4096 Apr 28 22:11 data/logs/
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo find test/ -printf "%i %p\n" > data/logs/inodes_before.txt
+-bash: data/logs/inodes_before.txt: Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo find test/ -printf "%i %p\n" | sudo tee data/logs/inodes_before.txt
+4459 test/
+4460 test/test1.txt
+4461 test/test2.txt
+11053 test/shortcut_config
+4448 test/hardlink_readme
+student@ee827eef645a:/home/workspace/ExamLinux$ rm app/readme.md
+rm: remove write-protected regular file 'app/readme.md'?
+student@ee827eef645a:/home/workspace/ExamLinux$ rm app/readme.md
+rm: remove write-protected regular file 'app/readme.md'? yes
+rm: cannot remove 'app/readme.md': Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo rm app/readme.md
+student@ee827eef645a:/home/workspace/ExamLinux$ find test/ -printf "%i %p\n" > logs/inodes_after.txt
+-bash: logs/inodes_after.txt: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux$ find test/ -printf "%i %p\n" > data/logs/inodes_after.txt
+-bash: data/logs/inodes_after.txt: Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux$ cat data/logs/inodes_before.txt
+4459 test/
+4460 test/test1.txt
+4461 test/test2.txt
+11053 test/shortcut_config
+4448 test/hardlink_readme
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo find test/ -printf "%i %p | sudo tee data/logs
+C:\Users\asus>
+
+C:\Users\asus>docker ps -a
+CONTAINER ID   IMAGE                              COMMAND   CREATED          STATUS          PORTS     NAMES
+ee827eef645a   mohamedazizbenhaha/linux_exam:v1   "bash"    24 minutes ago   Up 24 minutes             sweet_rubin
+c2bfcf940a46   mohamedazizbenhaha/linux_exam:v1   "bash"    39 minutes ago   Up 39 minutes             rh_exam
+
+C:\Users\asus>docker start ee827eef645a
+ee827eef645a
+
+C:\Users\asus>docker exec -it ee827eef645a/bin/bash
+docker: 'docker exec' requires at least 2 arguments
+
+Usage:  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+See 'docker exec --help' for more information
+
+C:\Users\asus>docker ps
+CONTAINER ID   IMAGE                              COMMAND   CREATED          STATUS          PORTS     NAMES
+ee827eef645a   mohamedazizbenhaha/linux_exam:v1   "bash"    25 minutes ago   Up 25 minutes             sweet_rubin
+c2bfcf940a46   mohamedazizbenhaha/linux_exam:v1   "bash"    40 minutes ago   Up 40 minutes             rh_exam
+
+C:\Users\asus>docker exec -it ee8 /bin/bash
+root@ee827eef645a:/# su- student
+bash: su-: command not found
+root@ee827eef645a:/# su - student
+student@ee827eef645a:~$ cd /home/workspace/ExamLinux
+student@ee827eef645a:/home/workspace/ExamLinux$ find test/ -printf "%i %p\n" > data/logs/inodes_after.txt
+-bash: data/logs/inodes_after.txt: Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo find test/ -printf "%i %p\n" | sudo tee data/logs/inodes_after.txt
+4459 test/
+4460 test/test1.txt
+4461 test/test2.txt
+11053 test/shortcut_config
+4448 test/hardlink_readme
+student@ee827eef645a:/home/workspace/ExamLinux$ grep -E "\b[0-9]{5}\b" app.log >> test1.txt
+-bash: test1.txt: Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo grep -E "\b[0-9]{5}\b" app.log | sudo tee test1.txt
+grep: app.log: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux$ cd data/logs
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ sudo grep -E "\b[0-9]{5}\b" app.log | sudo tee test1.txt
+[2025-04-28 09:45:30] [WARNING] Configuration parameter MAX_THREADS not found, using default (88888)
+[2025-04-28 09:50:00] [INFO] Starting security module v3.2.10012
+[2025-04-28 09:50:30] [WARNING] Certificate expiring in 31360 days
+[2025-04-28 10:00:00] [INFO] Application started successfully - PID 12348
+[2025-04-28 10:00:15] [INFO] Database connection established on port 33060
+[2025-04-28 10:15:30] [WARNING] High CPU usage detected (95%) - PID 12348
+[2025-04-28 10:16:15] [ERROR] Failed to process batch job ID: 45678
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ cat test1.txt
+[2025-04-28 09:45:30] [WARNING] Configuration parameter MAX_THREADS not found, using default (88888)
+[2025-04-28 09:50:00] [INFO] Starting security module v3.2.10012
+[2025-04-28 09:50:30] [WARNING] Certificate expiring in 31360 days
+[2025-04-28 10:00:00] [INFO] Application started successfully - PID 12348
+[2025-04-28 10:00:15] [INFO] Database connection established on port 33060
+[2025-04-28 10:15:30] [WARNING] High CPU usage detected (95%) - PID 12348
+[2025-04-28 10:16:15] [ERROR] Failed to process batch job ID: 45678
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ cd ..
+student@ee827eef645a:/home/workspace/ExamLinux/data$ sudo grep -E "^D" users.txt | sudo tee test2.txt
+Denis Dujardin|Security|active|2025-03-15|security,audit
+Diana Chen|Database Admin|active|2025-04-21|dba,security|lead
+student@ee827eef645a:/home/workspace/ExamLinux/data$ ls
+logs  test2.txt  users.txt
+student@ee827eef645a:/home/workspace/ExamLinux/data$ cd ..
+student@ee827eef645a:/home/workspace/ExamLinux$ ls
+app  archive  data  test  test1.txt
+student@ee827eef645a:/home/workspace/ExamLinux$ mv test1.txt test
+mv: replace 'test/test1.txt', overriding mode 0644 (rw-r--r--)? yes
+mv: cannot move 'test1.txt' to 'test/test1.txt': Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo mv test1.txt test
+student@ee827eef645a:/home/workspace/ExamLinux$ cat test/test1.txt
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo grep -E "\b[0-9]{5}\b" /data/logs/app.log | sudo tee test1.txt
+grep: /data/logs/app.log: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo grep -E "\b[0-9]{5}\b" /home/workspace/ExamLinux$/data/logs/app.log | sudo tee test1.txt
+grep: /home/workspace/ExamLinux$/data/logs/app.log: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo grep -E "\b[0-9]{5}\b" /home/workspace/ExamLinux/data/logs/app.log | sudo tee test1.txt
+[2025-04-28 09:45:30] [WARNING] Configuration parameter MAX_THREADS not found, using default (88888)
+[2025-04-28 09:50:00] [INFO] Starting security module v3.2.10012
+[2025-04-28 09:50:30] [WARNING] Certificate expiring in 31360 days
+[2025-04-28 10:00:00] [INFO] Application started successfully - PID 12348
+[2025-04-28 10:00:15] [INFO] Database connection established on port 33060
+[2025-04-28 10:15:30] [WARNING] High CPU usage detected (95%) - PID 12348
+[2025-04-28 10:16:15] [ERROR] Failed to process batch job ID: 45678
+student@ee827eef645a:/home/workspace/ExamLinux$ cat test/test1.txt
+student@ee827eef645a:/home/workspace/ExamLinux$ cd test
+student@ee827eef645a:/home/workspace/ExamLinux/test$ ls
+hardlink_readme  shortcut_config  test1.txt  test2.txt
+student@ee827eef645a:/home/workspace/ExamLinux/test$ cat test2.txt
+
+student@ee827eef645a:/home/workspace/ExamLinux/test$ sudo cat test1.txt
+student@ee827eef645a:/home/workspace/ExamLinux/test$ cd ..
+student@ee827eef645a:/home/workspace/ExamLinux$ ls
+app  archive  data  test  test1.txt
+student@ee827eef645a:/home/workspace/ExamLinux$ cat test.txt
+cat: test.txt: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux$ cat test1.txt
+[2025-04-28 09:45:30] [WARNING] Configuration parameter MAX_THREADS not found, using default (88888)
+[2025-04-28 09:50:00] [INFO] Starting security module v3.2.10012
+[2025-04-28 09:50:30] [WARNING] Certificate expiring in 31360 days
+[2025-04-28 10:00:00] [INFO] Application started successfully - PID 12348
+[2025-04-28 10:00:15] [INFO] Database connection established on port 33060
+[2025-04-28 10:15:30] [WARNING] High CPU usage detected (95%) - PID 12348
+[2025-04-28 10:16:15] [ERROR] Failed to process batch job ID: 45678
+student@ee827eef645a:/home/workspace/ExamLinux$ cd test
+student@ee827eef645a:/home/workspace/ExamLinux/test$ rm test1.txt
+rm: remove write-protected regular empty file 'test1.txt'? yes
+rm: cannot remove 'test1.txt': Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux/test$ sudo rm test1.txt
+student@ee827eef645a:/home/workspace/ExamLinux/test$ cd ..
+student@ee827eef645a:/home/workspace/ExamLinux$ mv test1.txt test
+mv: cannot move 'test1.txt' to 'test/test1.txt': Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux$ sudo mv test1.txt test
+student@ee827eef645a:/home/workspace/ExamLinux$ cd data
+student@ee827eef645a:/home/workspace/ExamLinux/data$ cd ..
+student@ee827eef645a:/home/workspace/ExamLinux$ cd  test
+student@ee827eef645a:/home/workspace/ExamLinux/test$ ls
+hardlink_readme  shortcut_config  test1.txt  test2.txt
+student@ee827eef645a:/home/workspace/ExamLinux/test$ cd ..
+student@ee827eef645a:/home/workspace/ExamLinux$ ls
+app  archive  data  test
+student@ee827eef645a:/home/workspace/ExamLinux$ cddata
+-bash: cddata: command not found
+student@ee827eef645a:/home/workspace/ExamLinux$ cd data
+student@ee827eef645a:/home/workspace/ExamLinux/data$ ls
+logs  test2.txt  users.txt
+student@ee827eef645a:/home/workspace/ExamLinux/data$ cd ../test
+student@ee827eef645a:/home/workspace/ExamLinux/test$ sudo rm test2.txt
+student@ee827eef645a:/home/workspace/ExamLinux/test$ cd ..
+student@ee827eef645a:/home/workspace/ExamLinux$ cd data
+student@ee827eef645a:/home/workspace/ExamLinux/data$ sudo mv test2.txt ../test
+student@ee827eef645a:/home/workspace/ExamLinux/data$ cd ..
+student@ee827eef645a:/home/workspace/ExamLinux$ cd test
+student@ee827eef645a:/home/workspace/ExamLinux/test$ cat test1
+cat: test1: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux/test$ cat test1.txt
+[2025-04-28 09:45:30] [WARNING] Configuration parameter MAX_THREADS not found, using default (88888)
+[2025-04-28 09:50:00] [INFO] Starting security module v3.2.10012
+[2025-04-28 09:50:30] [WARNING] Certificate expiring in 31360 days
+[2025-04-28 10:00:00] [INFO] Application started successfully - PID 12348
+[2025-04-28 10:00:15] [INFO] Database connection established on port 33060
+[2025-04-28 10:15:30] [WARNING] High CPU usage detected (95%) - PID 12348
+[2025-04-28 10:16:15] [ERROR] Failed to process batch job ID: 45678
+student@ee827eef645a:/home/workspace/ExamLinux/test$ cat test2.txt
+Denis Dujardin|Security|active|2025-03-15|security,audit
+Diana Chen|Database Admin|active|2025-04-21|dba,security|lead
+student@ee827eef645a:/home/workspace/ExamLinux/test$ {
+>
+>
+> }
+-bash: syntax error near unexpected token `}'
+student@ee827eef645a:/home/workspace/ExamLinux/test$ cd ../data/logs
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ {
+>  echo "Nombre total de lignes: $(wc -l < app.log)"
+> echo "Nombre total de mots: $(wc -w < app.log)"
+> echo "Nombre de lignes contenant ERROR: $(grep -c 'ERROR' app.log)"
+> > test/stats.txt
+> } > test/stats.txt
+-bash: test/stats.txt: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ {  echo "Nombre total de lignes: $(wc -l < app.log)"; echo "Nombre total de mots: $(wc -w < app.log)"; echo "Nombre de lignes contenant ERROR: $(grep -c 'ERROR' app.log)"; } > test/stats.txt
+-bash: test/stats.txt: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ {  echo "Nombre total de lignes: $(wc -l < app.log)"; echo "Nombre total de mots: $(wc -w < app.log)"; echo "Nombre de lignes contenant ERROR: $(grep -c 'ERROR' app.log)"; } > ../../test/stats.txt
+-bash: ../../test/stats.txt: Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ sudo {  echo "Nombre total de lignes: $(wc -l < app.log)"; echo "Nombre total de mots:
+ $(wc -w < app.log)"; echo "Nombre de lignes contenant ERROR: $(grep -c 'ERROR' app.log)"; } > ../../test/stats.txt
+-bash: syntax error near unexpected token `}'
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ sudo {  echo "Nombre total de lignes: $(wc -l < app.log)"; echo "Nombre total de mots: $(wc -w < app.log)"; echo "Nombre de lignes contenant ERROR: $(grep -c 'ERROR' app.log)"; } > /home/workspace/ExamLinux/test/stats.txt
+-bash: syntax error near unexpected token `}'
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ sudo {  echo "Nombre total de lignes: $(wc -l < app.log)"; echo "Nombre total de mots: $(wc -w < app.log)"; echo "Nombre de lignes contenant ERROR: $(grep -c 'ERROR' app.log)"; } sudo tee /home/workspace/ExamLinux/test/stats.txt
+-bash: syntax error near unexpected token `}'
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ sudo {  echo "Nombre total de lignes: $(wc -l < app.log)"; echo "Nombre total de mots: $(wc -w < app.log)"; echo "Nombre de lignes contenant ERROR: $(grep -c 'ERROR' app.log)"; } |sudo tee /home/workspace/ExamLinux/test/stats.txt
+-bash: syntax error near unexpected token `}'
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ sudo {  echo "Nombre total de lignes: $(wc -l < app.log)"; echo "Nombre total de mots: $(wc -w < app.log)"; echo "Nombre de lignes contenant ERROR: $(grep -c 'ERROR' app.log)" } | sudo tee /home/workspace/ExamLinux/test/stats.txt
+sudo: {: command not found
+Nombre total de mots: 334
+Nombre de lignes contenant ERROR: 5 }
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$  {  echo "Nombre total de lignes: $(wc -l < app.log)"; echo "Nombre total de mots: $(w
+c -w < app.log)"; echo "Nombre de lignes contenant ERROR: $(grep -c 'ERROR' app.log)" } | sudo tee /home/workspace/ExamLinux/test/stats.txt
+>
+>
+>
+> }
+Nombre total de lignes: 43
+Nombre total de mots: 334
+Nombre de lignes contenant ERROR: 5 }
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ cat /home/workspace/ExamLinux/test/stats.txt
+Nombre de lignes contenant ERROR: 5 }
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ sudo bash -c '{
+>  echo "Nombre total de lignes: $(wc -l < app.log)";
+>   echo "Nombre total de mots: $(wc -w < app.log)";
+>   echo "Nombre de lignes contenant ERROR: $(grep -c "ERROR" app.log)";
+> > /home/workspace/ExamLinux/test/stats.txt'
+bash: -c: line 5: syntax error: unexpected end of file
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ sudo bash -c '{
+ echo "Nombre total de lignes: $(wc -l < app.log)";
+  echo "Nombre total de mots: $(wc -w < app.log)";
+  echo "Nombre de lignes contenant ERROR: $(grep -c "ERROR" app.log)";
+} /home/workspace/ExamLinux/test/stats.txt'
+bash: -c: line 4: syntax error near unexpected token `/home/workspace/ExamLinux/test/stats.txt'
+bash: -c: line 4: `} /home/workspace/ExamLinux/test/stats.txt'
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ sudo bash -c '{
+ echo "Nombre total de lignes: $(wc -l < app.log)";
+  echo "Nombre total de mots: $(wc -w < app.log)";
+  echo "Nombre de lignes contenant ERROR: $(grep -c "ERROR" app.log)";
+} > /home/workspace/ExamLinux/test/stats.txt'
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ cat  /home/workspace/ExamLinux/test/stats.txt
+Nombre total de lignes: 43
+Nombre total de mots: 334
+Nombre de lignes contenant ERROR: 5
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ cd..
+-bash: cd..: command not found
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ cd..
+-bash: cd..: command not found
+student@ee827eef645a:/home/workspace/ExamLinux/data/logs$ cd ..
+student@ee827eef645a:/home/workspace/ExamLinux/data$ cd ..
+student@ee827eef645a:/home/workspace/ExamLinux$ cd app
+student@ee827eef645a:/home/workspace/ExamLinux/app$ nano analyse_logs.sh
+-bash: nano: command not found
+student@ee827eef645a:/home/workspace/ExamLinux/app$ nano app/analyse_logs.sh
+-bash: nano: command not found
+student@ee827eef645a:/home/workspace/ExamLinux/app$ vim analyse_logs.sh
+student@ee827eef645a:/home/workspace/ExamLinux/app$ cat analuanalyse_logs.sh
+cat: analuanalyse_logs.sh: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux/app$ cat analyse_logs.sh
+cat: analyse_logs.sh: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux/app$ vim analyse_logs.sh
+student@ee827eef645a:/home/workspace/ExamLinux/app$ touch analyse_logs.sh
+touch: cannot touch 'analyse_logs.sh': Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux/app$ ls
+config.cfg  main.sh
+student@ee827eef645a:/home/workspace/ExamLinux/app$ sudo touch analyse_logs.sh
+student@ee827eef645a:/home/workspace/ExamLinux/app$ ls
+analyse_logs.sh  config.cfg  main.sh
+student@ee827eef645a:/home/workspace/ExamLinux/app$ vim analyse_logs.sh
+student@ee827eef645a:/home/workspace/ExamLinux/app$ cat analyse_logs.sh
+student@ee827eef645a:/home/workspace/ExamLinux/app$ sudo vim analyse_logs.sh
+student@ee827eef645a:/home/workspace/ExamLinux/app$ cat analyse_logs.sh
+#!/bin/bash
+
+if ! groups $USER | grep -q sudo; then
+  echo "Vous devez être dans le groupe sudo pour exécuter ce script."
+  exit 1
+fi
+
+log_dir="$1"
+output="logs/rapport_logs.txt"
+echo "Rapport de logs" > $output
+
+for log in "$log_dir"/*.log; do
+  echo "Fichier: $(basename "$log")" >> $output
+  echo "ERROR: $(grep -c 'ERROR' "$log")" >> $output
+  echo "WARNING: $(grep -c 'WARNING' "$log")" >> $output
+  echo "INFO: $(grep -c 'INFO' "$log")" >> $output
+  echo "--------------------------" >> $output
+done
+
+student@ee827eef645a:/home/workspace/ExamLinux/app$ cd ..
+student@ee827eef645a:/home/workspace/ExamLinux$ cd test
+student@ee827eef645a:/home/workspace/ExamLinux/test$ cat users.txt app.log > test/fusion.txt
+-bash: test/fusion.txt: No such file or directory
+student@ee827eef645a:/home/workspace/ExamLinux/test$ cat users.txt app.log > fusion.txt
+-bash: fusion.txt: Permission denied
+student@ee827eef645a:/home/workspace/ExamLinux/test$ sudo su
+root@ee827eef645a:/home/workspace/ExamLinux/test# cat users.txt app.log > fusion.txt
+cat: users.txt: No such file or directory
+cat: app.log: No such file or directory
+root@ee827eef645a:/home/workspace/ExamLinux/test# cat /home/workspace/ExamLinux/data/users.txt /home/workspace/ExamLinux/data/logs/app.log > fus
+ion.txt
+root@ee827eef645a:/home/workspace/ExamLinux/test# cat fusion.txt
+Alice Dupont|Developer|active|2025-01-15|dev,docker
+Ahmed Ben Ali|Security|active|2025-04-22|security,pentesting|senior
+Barbara Wilson|Developer|active|2025-04-25|dev,ai|lead
+Bob Martin|System Admin|active|2024-12-01|admin,backup
+Carlos Rodriguez|System Admin|active|2025-04-19|admin,cloud|senior
+Charlie Durand|Developer|inactive|2025-02-28|dev
+Denis Dujardin|Security|active|2025-03-15|security,audit
+Diana Chen|Database Admin|active|2025-04-21|dba,security|lead
+Emilie Deville|Database Admin|active|2025-01-30|dba,backup
+Erik Nielsen|Network Admin|active|2025-04-23|network,cloud|senior
+Fabrice Denis|Network Admin|active|2024-11-15|network,security
+George Lemoine|Developer|active|2025-04-01|dev,testing
+Helene Dupuis|System Admin|active|2025-03-01|admin,security
+Isabelle Moreau|Security|active|2025-02-15|security,audit
+Jacques Lambert|Developer|inactive|2025-01-01|dev
+Kevin Thomas|Database Admin|active|2025-04-15|dba,backup
+Louise Martin|Network Admin|active|2025-03-30|network,monitoring
+Michel Dubois|Developer|active|2025-04-10|dev,docker
+Nicole Pascal|System Admin|active|2025-02-28|admin,security
+Oscar Renard|Security|active|2025-04-20|security,audit
+Patricia Klein|Developer|active|2025-03-25|dev,testing
+Robert Dumas|Database Admin|active|2025-04-01|dba,monitoring
+Sophie Vincent|Network Admin|active|2025-03-15|network,security
+Thomas Duval|Developer|active|2025-04-05|dev,docker
+Ulrich Bernard|System Admin|active|2025-02-01|admin,backup
+Victor Durant|Security|active|2025-04-12|security,audit
+William Dubois|Developer|active|2025-03-20|dev,testing
+Xavier Dupont|Database Admin|active|2025-04-08|dba,backup
+Yves Martin|Network Admin|active|2025-03-10|network,monitoring
+Zoe Deschamps|Developer|active|2025-04-18|dev,docker
+[2025-04-28 09:30:00] [INFO] System pre-initialization checks started
+[2025-04-28 09:30:15] [INFO] Checking system requirements
+[2025-04-28 09:30:30] [INFO] Memory available: 3.8GB/4GB
+[2025-04-28 09:30:45] [INFO] Disk space available: 18.5GB/20GB
+[2025-04-28 09:31:00] [WARNING] Swap usage higher than normal: 15%
+[2025-04-28 09:45:00] [INFO] System initialization started
+[2025-04-28 09:45:15] [INFO] Loading configuration from /etc/megaappx/config.cfg
+[2025-04-28 09:45:30] [WARNING] Configuration parameter MAX_THREADS not found, using default (88888)
+[2025-04-28 09:45:45] [INFO] Initializing database connections
+[2025-04-28 09:46:00] [INFO] Redis cache initialization started
+[2025-04-28 09:46:15] [WARNING] Redis memory limit approaching 75%
+[2025-04-28 09:50:00] [INFO] Starting security module v3.2.10012
+[2025-04-28 09:50:15] [INFO] Loading SSL certificates
+[2025-04-28 09:50:30] [WARNING] Certificate expiring in 31360 days
+[2025-04-28 09:55:00] [INFO] System boot sequence initiated
+[2025-04-28 09:55:15] [INFO] Loading kernel modules
+[2025-04-28 09:55:30] [ERROR] Failed to load module: network_optimizer
+[2025-04-28 10:00:00] [INFO] Application started successfully - PID 12348
+[2025-04-28 10:00:15] [INFO] Database connection established on port 33060
+[2025-04-28 10:00:30] [INFO] Backup service initialized
+[2025-04-28 10:02:30] [INFO] User authentication service started
+[2025-04-28 10:05:00] [WARNING] Memory usage exceeds 80% (Used: 3.2GB/4GB)
+[2025-04-28 10:07:23] [ERROR] Database connection lost - Connection timeout after 30s
+[2025-04-28 10:07:24] [INFO] Attempting reconnect - Try 1/3
+[2025-04-28 10:07:45] [WARNING] Reconnection failed - Try 1
+[2025-04-28 10:08:00] [INFO] Attempting reconnect - Try 2/3
+[2025-04-28 10:09:00] [INFO] Reconnection successful after 2 attempts
+[2025-04-28 10:10:15] [INFO] Cache sync completed - 1500 entries processed
+[2025-04-28 10:15:30] [WARNING] High CPU usage detected (95%) - PID 12348
+[2025-04-28 10:16:00] [WARNING] Network latency exceeds threshold (>50000ms)
+[2025-04-28 10:16:15] [ERROR] Failed to process batch job ID: 45678
+[2025-04-28 10:16:30] [WARNING] Queue size exceeding normal limits
+[2025-04-28 10:17:45] [ERROR] SYSTEM FAILURE: code 404 - Service unavailable
+[2025-04-28 10:18:00] [ERROR] Failed to write to /var/log/megaappx/backup.log
+[2025-04-28 10:20:00] [INFO] Starting automatic recovery procedure
+[2025-04-28 10:20:15] [INFO] Attempting system restore point recovery
+[2025-04-28 10:20:30] [WARNING] Partial recovery achieved
+[2025-04-28 10:25:00] [WARNING] Cache hit ratio below threshold (45%)
+[2025-04-28 10:30:00] [INFO] System shutdown initiated - graceful termination
+[2025-04-28 10:30:15] [INFO] Active connections terminated: 15
+[2025-04-28 10:30:30] [INFO] Database connections closed
+[2025-04-28 10:30:45] [INFO] Cache cleared successfully
+[2025-04-28 10:31:00] [INFO] System shutdown completed
+root@ee827eef645a:/home/workspace/ExamLinux/test# sort fusion.txt | tee fusion_sorted.txt | uniq > fusion_unique.txt
+root@ee827eef645a:/home/workspace/ExamLinux/test# cat fusion.txt
+Alice Dupont|Developer|active|2025-01-15|dev,docker
+Ahmed Ben Ali|Security|active|2025-04-22|security,pentesting|senior
+Barbara Wilson|Developer|active|2025-04-25|dev,ai|lead
+Bob Martin|System Admin|active|2024-12-01|admin,backup
+Carlos Rodriguez|System Admin|active|2025-04-19|admin,cloud|senior
+Charlie Durand|Developer|inactive|2025-02-28|dev
+Denis Dujardin|Security|active|2025-03-15|security,audit
+Diana Chen|Database Admin|active|2025-04-21|dba,security|lead
+Emilie Deville|Database Admin|active|2025-01-30|dba,backup
+Erik Nielsen|Network Admin|active|2025-04-23|network,cloud|senior
+Fabrice Denis|Network Admin|active|2024-11-15|network,security
+George Lemoine|Developer|active|2025-04-01|dev,testing
+Helene Dupuis|System Admin|active|2025-03-01|admin,security
+Isabelle Moreau|Security|active|2025-02-15|security,audit
+Jacques Lambert|Developer|inactive|2025-01-01|dev
+Kevin Thomas|Database Admin|active|2025-04-15|dba,backup
+Louise Martin|Network Admin|active|2025-03-30|network,monitoring
+Michel Dubois|Developer|active|2025-04-10|dev,docker
+Nicole Pascal|System Admin|active|2025-02-28|admin,security
+Oscar Renard|Security|active|2025-04-20|security,audit
+Patricia Klein|Developer|active|2025-03-25|dev,testing
+Robert Dumas|Database Admin|active|2025-04-01|dba,monitoring
+Sophie Vincent|Network Admin|active|2025-03-15|network,security
+Thomas Duval|Developer|active|2025-04-05|dev,docker
+Ulrich Bernard|System Admin|active|2025-02-01|admin,backup
+Victor Durant|Security|active|2025-04-12|security,audit
+William Dubois|Developer|active|2025-03-20|dev,testing
+Xavier Dupont|Database Admin|active|2025-04-08|dba,backup
+Yves Martin|Network Admin|active|2025-03-10|network,monitoring
+Zoe Deschamps|Developer|active|2025-04-18|dev,docker
+[2025-04-28 09:30:00] [INFO] System pre-initialization checks started
+[2025-04-28 09:30:15] [INFO] Checking system requirements
+[2025-04-28 09:30:30] [INFO] Memory available: 3.8GB/4GB
+[2025-04-28 09:30:45] [INFO] Disk space available: 18.5GB/20GB
+[2025-04-28 09:31:00] [WARNING] Swap usage higher than normal: 15%
+[2025-04-28 09:45:00] [INFO] System initialization started
+[2025-04-28 09:45:15] [INFO] Loading configuration from /etc/megaappx/config.cfg
+[2025-04-28 09:45:30] [WARNING] Configuration parameter MAX_THREADS not found, using default (88888)
+[2025-04-28 09:45:45] [INFO] Initializing database connections
+[2025-04-28 09:46:00] [INFO] Redis cache initialization started
+[2025-04-28 09:46:15] [WARNING] Redis memory limit approaching 75%
+[2025-04-28 09:50:00] [INFO] Starting security module v3.2.10012
+[2025-04-28 09:50:15] [INFO] Loading SSL certificates
+[2025-04-28 09:50:30] [WARNING] Certificate expiring in 31360 days
+[2025-04-28 09:55:00] [INFO] System boot sequence initiated
+[2025-04-28 09:55:15] [INFO] Loading kernel modules
+[2025-04-28 09:55:30] [ERROR] Failed to load module: network_optimizer
+[2025-04-28 10:00:00] [INFO] Application started successfully - PID 12348
+[2025-04-28 10:00:15] [INFO] Database connection established on port 33060
+[2025-04-28 10:00:30] [INFO] Backup service initialized
+[2025-04-28 10:02:30] [INFO] User authentication service started
+[2025-04-28 10:05:00] [WARNING] Memory usage exceeds 80% (Used: 3.2GB/4GB)
+[2025-04-28 10:07:23] [ERROR] Database connection lost - Connection timeout after 30s
+[2025-04-28 10:07:24] [INFO] Attempting reconnect - Try 1/3
+[2025-04-28 10:07:45] [WARNING] Reconnection failed - Try 1
+[2025-04-28 10:08:00] [INFO] Attempting reconnect - Try 2/3
+[2025-04-28 10:09:00] [INFO] Reconnection successful after 2 attempts
+[2025-04-28 10:10:15] [INFO] Cache sync completed - 1500 entries processed
+[2025-04-28 10:15:30] [WARNING] High CPU usage detected (95%) - PID 12348
+[2025-04-28 10:16:00] [WARNING] Network latency exceeds threshold (>50000ms)
+[2025-04-28 10:16:15] [ERROR] Failed to process batch job ID: 45678
+[2025-04-28 10:16:30] [WARNING] Queue size exceeding normal limits
+[2025-04-28 10:17:45] [ERROR] SYSTEM FAILURE: code 404 - Service unavailable
+[2025-04-28 10:18:00] [ERROR] Failed to write to /var/log/megaappx/backup.log
+[2025-04-28 10:20:00] [INFO] Starting automatic recovery procedure
+[2025-04-28 10:20:15] [INFO] Attempting system restore point recovery
+[2025-04-28 10:20:30] [WARNING] Partial recovery achieved
+[2025-04-28 10:25:00] [WARNING] Cache hit ratio below threshold (45%)
+[2025-04-28 10:30:00] [INFO] System shutdown initiated - graceful termination
+[2025-04-28 10:30:15] [INFO] Active connections terminated: 15
+[2025-04-28 10:30:30] [INFO] Database connections closed
+[2025-04-28 10:30:45] [INFO] Cache cleared successfully
+[2025-04-28 10:31:00] [INFO] System shutdown completed
+root@ee827eef645a:/home/workspace/ExamLinux/test# history > commands.txt
+root@ee827eef645a:/home/workspace/ExamLinux/test# cat comands.txt
+cat: comands.txt: No such file or directory
+root@ee827eef645a:/home/workspace/ExamLinux/test# cat commands.txt
+    1  cat users.txt app.log > fusion.txt
+    2  cat /home/workspace/ExamLinux/data/users.txt /home/workspace/ExamLinux/data/logs/app.log > fusion.txt
+    3  cat fusion.txt
+    4  sort fusion.txt | tee fusion_sorted.txt | uniq > fusion_unique.txt
+    5  cat fusion.txt
+    6  history > commands.txt
+root@ee827eef645a:/home/workspace/ExamLinux/test# su -student
+su: failed to execute tudent: No such file or directory
+root@ee827eef645a:/home/workspace/ExamLinux/test# su - student
+student@ee827eef645a:~$ history > commands1.txt
+student@ee827eef645a:~$ cat commands1.txt
+    1  history > commands1.txt
+student@ee827eef645a:~$ history
+    1  history > commands1.txt
+    2  cat commands1.txt
+    3  history
+student@ee827eef645a:~$ history
+    1  history > commands1.txt
+    2  cat commands1.txt
+    3  history
+student@ee827eef645a:~$ history
+    1  history > commands1.txt
+    2  cat commands1.txt
+    3  history
+student@ee827eef645a:~$ history
+    1  history > commands1.txt
+    2  cat commands1.txt
+    3  history
+student@ee827eef645a:~$ ls
+commands1.txt  examen
+student@ee827eef645a:~$ rm commands1.txt
+student@ee827eef645a:~$ cd examen
+student@ee827eef645a:~/examen$ ls
+securite  sudoers_copy.txt
+student@ee827eef645a:~/examen$ cat sudoers_copy.txt
+cat: sudoers_copy.txt: Permission denied
+student@ee827eef645a:~/examen$ cd securite
+student@ee827eef645a:~/examen/securite$ ls
+confidentiel.txt  permissions_check.txt  public.txt
+student@ee827eef645a:~/examen/securite$ /home/workspace/ExamLinux
+-bash: /home/workspace/ExamLinux: Is a directory
+student@ee827eef645a:~/examen/securite$ cd /home/workspace/ExamLinux
+student@ee827eef645a:/home/workspace/ExamLinux$

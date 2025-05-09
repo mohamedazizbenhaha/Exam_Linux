@@ -1,0 +1,6 @@
+    1  cat users.txt app.log > fusion.txt
+    2  cat /home/workspace/ExamLinux/data/users.txt /home/workspace/ExamLinux/data/logs/app.log > fusion.txt
+    3  cat fusion.txt
+    4  sort fusion.txt | tee fusion_sorted.txt | uniq > fusion_unique.txt
+    5  cat fusion.txt
+    6  history > commands.txt
